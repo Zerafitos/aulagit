@@ -1,5 +1,6 @@
 package exemplos.exercicio02;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -9,6 +10,7 @@ public class App {
         Scanner teclado = new Scanner(System.in);
 
         int opcao;
+        ArrayList <ContaCorrente> listaDeContas = new ArrayList<>();
         ContaCorrente cc = null;
 
         do {
@@ -17,7 +19,7 @@ public class App {
             System.out.println("2-Nova Conta Especial");
             System.out.println("3-Nova Conta Poupança");
             System.out.println("4-Fazer depósito");
-            System.out.println("5-Fazer saque");
+            System.out.println("5-Exibir todas as contas");
             System.out.println("6-Consultar Saldo");
             System.out.println("7-Sair");
             System.out.print("-->");
@@ -30,6 +32,7 @@ public class App {
                     System.out.println("Informe o número da conta");
                     int numeroConta = teclado.nextInt();
                     cc = new ContaCorrente(numeroConta);
+                    listaDeContas.add(cc);
                     break; // parada pra fazer somente a opção digitada
                 case 2:
                     System.out.println("Criando uma conta especial.");
@@ -41,7 +44,11 @@ public class App {
                     
                     break;
                 case 5:
-                    
+                    for (int i = 0; i < listaDeContas.size(); i++)    
+                    {
+                        System.out.println(listaDeContas.get(i).getConta());
+                    }
+
                     break;
                 case 6:
                     System.out.println("Saldo: " + cc.getSaldo()); 
