@@ -1,3 +1,4 @@
+package exemplos.exemplorelogio;
 /**
  * Relogio
  */
