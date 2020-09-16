@@ -4,7 +4,7 @@ public class ContaEspecial extends Conta {
 
     private double limite;
 
-    public ContaEspecial(int numero, double saldo, double limite)
+    public ContaEspecial(int numero, double limite)
 
     {
         super(numero);
@@ -31,4 +31,11 @@ public class ContaEspecial extends Conta {
         
     }
 
+    @Override
+    public String getConta() {
+        // TODO Auto-generated method stub
+        return "Especial > "  +super.getConta() + " - " + limite;
+    }
+
+    
 }

@@ -23,7 +23,7 @@ public class Conta {
     //método de exibição
     public String getConta()
     {
-        return "Conta " + numero;
+        return  numero + " : Saldo " + saldo;
     }
 
     public double getSaldo()

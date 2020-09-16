@@ -37,4 +37,11 @@ public class ContaCorrente extends Conta {
     super.deposito(valor - taxa);
     }
 
+
+    @Override
+    public String getConta() {
+        // TODO Auto-generated method stub
+        return "Corrente > "  +super.getConta();
+    }
+
 }

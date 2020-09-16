@@ -10,8 +10,12 @@ public class App {
         Scanner teclado = new Scanner(System.in);
 
         int opcao;
-        ArrayList <ContaCorrente> listaDeContas = new ArrayList<>();
+        ArrayList <Conta> listaDeContas = new ArrayList<>();
         ContaCorrente cc = null;
+        ContaEspecial ce = null;
+        ContaPoupanca cp = null;
+        double limite;
+        ContaPoupanca.setTaxa(0.1);
 
         do {
 
@@ -36,9 +40,19 @@ public class App {
                     break; // parada pra fazer somente a opção digitada
                 case 2:
                     System.out.println("Criando uma conta especial.");
+                    System.out.println("Informe o número da conta");
+                    numeroConta = teclado.nextInt();
+                    System.out.println("Informe o limite:");
+                    limite = teclado.nextDouble();
+                    ce = new ContaEspecial(numeroConta, limite);
+                    listaDeContas.add(ce);
                     break;
                 case 3:
-                    
+                    System.out.println("Criando uma conta poupança.");
+                    System.out.println("Informe o número da conta");
+                    numeroConta = teclado.nextInt();
+                    cp = new ContaPoupanca(numeroConta);
+                    listaDeContas.add(cp);
                     break;
                 case 4:
                     

@@ -5,7 +5,7 @@ public class ContaPoupanca extends Conta {
     private static double taxa;
 
 
-    public ContaPoupanca (int numero, double saldo)
+    public ContaPoupanca (int numero)
     {
         super(numero);
     }
@@ -31,5 +31,11 @@ public class ContaPoupanca extends Conta {
       }
       
   }
-    
+  @Override
+  public String getConta() {
+      // TODO Auto-generated method stub
+      return "Poupança > "  + super.getConta();
+  }
+
+ 
 }
