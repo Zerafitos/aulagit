@@ -1,6 +1,6 @@
 package exemplos.exercicio02;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class App {
@@ -8,14 +8,15 @@ public class App {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-
         int opcao;
-        ArrayList <Conta> listaDeContas = new ArrayList<>();
-        ContaCorrente cc = null;
-        ContaEspecial ce = null;
-        ContaPoupanca cp = null;
+
+        GerenciaContas contas = new GerenciaContas();
+  
         double limite;
         ContaPoupanca.setTaxa(0.1);
+        int numeroConta;
+        double valor;
+
 
         do {
 
@@ -23,9 +24,10 @@ public class App {
             System.out.println("2-Nova Conta Especial");
             System.out.println("3-Nova Conta Poupança");
             System.out.println("4-Fazer depósito");
-            System.out.println("5-Exibir todas as contas");
-            System.out.println("6-Consultar Saldo");
-            System.out.println("7-Sair");
+            System.out.println("5-Fazer saque");
+            System.out.println("6-Exibir todas as contas");
+            System.out.println("7-Consultar Saldo");
+            System.out.println("8-Sair");
             System.out.print("-->");
             opcao = teclado.nextInt();
 
@@ -34,9 +36,10 @@ public class App {
                 case 1:
                     System.out.println("Criando uma conta corrente.");
                     System.out.println("Informe o número da conta");
-                    int numeroConta = teclado.nextInt();
-                    cc = new ContaCorrente(numeroConta);
-                    listaDeContas.add(cc);
+                    numeroConta = teclado.nextInt();
+                    //cc = new ContaCorrente(numeroConta);
+                    //listaDeContas.add(cc);
+                    contas.novaContaCorrente(numeroConta);
                     break; // parada pra fazer somente a opção digitada
                 case 2:
                     System.out.println("Criando uma conta especial.");
@@ -44,28 +47,54 @@ public class App {
                     numeroConta = teclado.nextInt();
                     System.out.println("Informe o limite:");
                     limite = teclado.nextDouble();
-                    ce = new ContaEspecial(numeroConta, limite);
-                    listaDeContas.add(ce);
+                    //ce = new ContaEspecial(numeroConta, limite);
+                    //listaDeContas.add(ce);
+                    contas.novaContaEspecial(numeroConta, limite);
                     break;
                 case 3:
                     System.out.println("Criando uma conta poupança.");
                     System.out.println("Informe o número da conta");
                     numeroConta = teclado.nextInt();
-                    cp = new ContaPoupanca(numeroConta);
-                    listaDeContas.add(cp);
+                    //cp = new ContaPoupanca(numeroConta);
+                    //listaDeContas.add(cp);
+                    contas.novaContaPoupanca(numeroConta);
                     break;
                 case 4:
-                    
+                    System.out.println("Informe o número da conta");
+                    numeroConta = teclado.nextInt();
+                    System.out.println("Informe o valor do depósito:");
+                    valor = teclado.nextDouble();   
+
+                    if(contas.deposito(numeroConta, valor))
+                    {
+                     System.out.println("Depósito realizado");
+                    }
+                    else{
+                    System.out.println("Depósito não realizado");
+                    }
                     break;
                 case 5:
-                    for (int i = 0; i < listaDeContas.size(); i++)    
-                    {
-                        System.out.println(listaDeContas.get(i).getConta());
-                    }
 
+                System.out.println("Informe o número da conta");
+                numeroConta = teclado.nextInt();
+                System.out.println("Informe o valor do saque:");
+                valor = teclado.nextDouble();   
+
+                if(contas.deposito(numeroConta, valor))
+                {
+                 System.out.println("Saque realizado");
+                }
+                else{
+                System.out.println("Saque não realizado");
+                }
+                    
                     break;
                 case 6:
-                    System.out.println("Saldo: " + cc.getSaldo()); 
+                  System.out.println(contas.listarContas());
+
+                    break;
+                case 7:
+                    System.out.println(contas.listarContas());
                     break;
                 
                 default:
@@ -75,7 +104,7 @@ public class App {
 
 
 
-        } while (opcao != 7);
+        } while (opcao != 8);
        
         teclado.close();
 

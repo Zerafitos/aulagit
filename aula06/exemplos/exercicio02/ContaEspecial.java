@@ -16,25 +16,21 @@ public class ContaEspecial extends Conta {
         return limite;
     }
 
-    //método
     @Override
-    public void saque(double valor) {
-        // TODO Auto-generated method stub
-        if (valor > 0 && getSaldo() + limite > valor)
-        {
-            super.saque(valor);
+    public boolean saque(double valor) {
+        if (valor > 0 && getSaldo() + limite >= valor) {
+            return super.saque(valor);
+        }else{
+            return false;
         }
-        else
-        {
-            System.out.println("Saque não efetuado");
-        }
-        
     }
+        
+
 
     @Override
-    public String getConta() {
+    public String exibir() {
         // TODO Auto-generated method stub
-        return "Especial > "  +super.getConta() + " - " + limite;
+        return "Especial > "  +super.exibir() + " - " + limite;
     }
 
     

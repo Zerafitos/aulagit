@@ -1,6 +1,6 @@
 package exemplos.exercicio02;
 
-public class Conta {
+public abstract class Conta {
 
     private int numero;
     private double saldo;
@@ -21,9 +21,13 @@ public class Conta {
 
 
     //método de exibição
-    public String getConta()
+    public int getNumero()
     {
-        return  numero + " : Saldo " + saldo;
+        return numero;
+    }
+
+    public String exibir() {
+        return numero + " : " + saldo;
     }
 
     public double getSaldo()
@@ -36,15 +40,15 @@ public class Conta {
     public void deposito(double valor)
     {
         if (valor > 0)
-        saldo = this.saldo + valor;
+        saldo = saldo + valor;
     }
 
-    public void saque (double valor)
-    {
-        if (valor > 0)
-        {
-        saldo = this.saldo - valor;
-        System.out.println("Saque efetuado");
+    public boolean saque(double valor) {
+        if (valor > 0) {
+            saldo = saldo - valor;
+            return true;
+        } else {
+            return false;
         }
     }
     

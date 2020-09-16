@@ -14,21 +14,13 @@ public class ContaCorrente extends Conta {
     
   //método
   @Override
-  public void saque(double valor) {
-      // TODO Auto-generated method stub
-      
-      if (valor > 0 && getSaldo() >= valor )
-      {
-          super.saque(valor);
+  public boolean saque(double valor) {
+      if(getSaldo() >= valor){
+          return super.saque(valor);
+      }else{
+          return false;
       }
-      else 
-      {
-          System.out.println("Saque não efetuado");
-      }
-
-
-    }
-
+  }
 
     @Override
     public void deposito(double valor) {
@@ -39,9 +31,9 @@ public class ContaCorrente extends Conta {
 
 
     @Override
-    public String getConta() {
+    public String exibir() {
         // TODO Auto-generated method stub
-        return "Corrente > "  +super.getConta();
+        return "Corrente > "  +super.exibir();
     }
 
 }

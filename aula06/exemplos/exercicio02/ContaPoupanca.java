@@ -16,25 +16,21 @@ public class ContaPoupanca extends Conta {
     }
 
 
-  //método
+
+    @Override
+    public boolean saque(double valor) {
+        if (valor > 0 && getSaldo() + taxa >= valor) {
+            return super.saque(valor + taxa);
+        }else{
+            return false;
+        }
+    }
+
+
   @Override
-  public void saque(double valor) {
+  public String exibir() {
       // TODO Auto-generated method stub
-      
-      if (valor > 0 && getSaldo() + taxa >  valor)
-      {
-          super.saque(valor + taxa);
-      }
-      else
-      {
-          System.out.println("Saque não efetuado");
-      }
-      
-  }
-  @Override
-  public String getConta() {
-      // TODO Auto-generated method stub
-      return "Poupança > "  + super.getConta();
+      return "Poupança > "  + super.exibir();
   }
 
  
