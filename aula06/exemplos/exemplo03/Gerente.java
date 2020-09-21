@@ -1,4 +1,4 @@
-package exemplos.exemplo03;
+package aula06.exemplos.exemplo03;
 
 public class Gerente extends Funcionario{
 

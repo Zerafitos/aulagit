@@ -1,4 +1,4 @@
-package exemplos.exemplorelogio;
+package aula06.exemplos.exemplorelogio;
 /**
  * App
  */
